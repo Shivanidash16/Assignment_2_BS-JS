@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_Task7</title>
+    <script type="text/javascript">
+
+        var img = null;
+        var movingInterval = null; 
+        var initialLeft = 50; 
+        var maxLeft = 500; 
+
+        function init() {
+            img = document.getElementById('myimg');
+            img.style.position = 'relative';
+            img.style.left = initialLeft + 'px';
+        }
+
+        function moveRight() {
+            var currentLeft = parseInt(img.style.left);
+            if (currentLeft < maxLeft) {
+                img.style.left = currentLeft + 10 + 'px'; 
+            } else {
+                img.style.left = initialLeft + 'px'; 
+            }
+        }
+
+        function startMoving() {
+            movingInterval = setInterval(moveRight, 100); 
+        }
+
+        function stopMoving() {
+            clearInterval(movingInterval);
+        }
+
+        window.onload = init;
+
+    </script>
+</head>
+<body>
+    <form>
+        <img id="myimg" src="./js_7.jpeg" />
+      
+            <p>Click the following buttons to handle the animations</p>
+            <input type="button" value="Start" onclick="startMoving();" />
+            <input type="button" value="Stop" onclick="stopMoving();" />
+      
+    </form>
+</body>
+</html>
